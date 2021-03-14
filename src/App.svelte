@@ -1,36 +1,18 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
 
-  import Header from "./components/Header.svelte";
-  import Footer from "./components/Footer.svelte";
+    import Status from './modules/Status.svelte';
+    import Live from './modules/Live.svelte';
+    import Shows from './modules/Shows.svelte';
 
-  import Start from "./routes/start/Index.svelte";
+    let isLive = false;
 
-  export let url = "";
 </script>
 
-<Router url="{url}">
-
-	<div class="header">
-        <div class="wrapper">
-            <Header />
-        </div>
-    </div>
-
-    <div class="page">
-        <div class="wrapper">
-
-            <main>
-                <Route path="/"><Start /></Route>
-            </main>
-
-            <Footer />
-
-        </div>
-    </div>
-
-</Router>
+    <Status isLive={false} />
+    {#if isLive}
+        <Live />
+    {/if}
+    <Shows />
 
 <style lang="scss">
-
 </style>
