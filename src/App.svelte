@@ -1,18 +1,23 @@
+
 <script>
 
-    import Status from './modules/Status.svelte';
+    //import Status from './modules/Status.svelte';
     import Live from './modules/Live.svelte';
-    import Shows from './modules/Shows.svelte';
+    //import Shows from './modules/Shows.svelte';
 
-    let isLive = false;
+    let isLive = true;
 
 </script>
 
-    <Status isLive={false} />
+<!--    <Status isLive={false} /> -->
+
     {#if isLive}
         <Live />
     {/if}
+
+<!--
     <Shows />
+-->
 
 <style lang="scss">
 </style>
