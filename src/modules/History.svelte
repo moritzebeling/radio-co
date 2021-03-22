@@ -1,7 +1,7 @@
 <script>
 
     import Load from './Load.svelte';
-    const url = 'http://134.122.90.200:80/api/nowplaying/1';
+    const url = 'http://134.122.90.200:80/api/station/1/history';
 
     let show = false;
     function toggle(){
@@ -14,7 +14,7 @@
 
     <section>
 
-        <h1>Now Playing</h1>
+        <h1>History</h1>
         <button on:click={toggle}>Toggle</button>
         {#if show}
             <pre>{JSON.stringify( data, null, 2 )}</pre>
