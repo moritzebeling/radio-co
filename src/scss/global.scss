@@ -26,3 +26,11 @@ body {
 	opacity: 1;
 	transition: opacity 300ms;
 }
+
+pre {
+	background-color: #eee;
+	margin: 0.5rem;
+	padding: 0.5rem;
+	font-family: monospace;
+	border-radius: 1rem;
+}
