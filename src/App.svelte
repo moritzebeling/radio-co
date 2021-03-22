@@ -2,6 +2,7 @@
 
     //import Status from './modules/Status.svelte';
     import Live from './modules/Live.svelte';
+    import Station from './modules/Station.svelte';
     import NowPlaying from './modules/NowPlaying.svelte';
 
     let isLive = true;
@@ -14,6 +15,7 @@
         <Live />
     {/if}
 
+    <Station />
     <NowPlaying />
 
 <style lang="scss">
