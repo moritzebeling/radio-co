@@ -1,9 +1,8 @@
-
 <script>
 
     //import Status from './modules/Status.svelte';
     import Live from './modules/Live.svelte';
-    //import Shows from './modules/Shows.svelte';
+    import NowPlaying from './modules/NowPlaying.svelte';
 
     let isLive = true;
 
@@ -15,9 +14,7 @@
         <Live />
     {/if}
 
-<!--
-    <Shows />
--->
+    <NowPlaying />
 
 <style lang="scss">
 </style>

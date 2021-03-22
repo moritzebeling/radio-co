@@ -2,8 +2,8 @@
 load async json data
 */
 export async function load( url, callback = false ){
-    const res = await fetch( url );
 
+    const res = await fetch( url );
     const data = await res.json();
 
     if (res.ok) {
