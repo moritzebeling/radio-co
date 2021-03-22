@@ -28,14 +28,20 @@ body {
 }
 
 pre {
-	background-color: #eee;
-	margin: 0.5rem;
+	background-color: antiquewhite;
 	padding: 0.5rem;
 	font-family: monospace;
 	border-radius: 1rem;
+	overflow: auto;
 }
 
 h1 {
 	font-size: 2rem;
-	margin: 1rem;
+}
+
+section {
+	margin: 2rem;
+	border-radius: 1rem;
+	padding: 0.5rem;
+	background-color: #eee;
 }

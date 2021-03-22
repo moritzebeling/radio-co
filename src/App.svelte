@@ -9,6 +9,8 @@
 
 </script>
 
+<main>
+
 <!--    <Status isLive={false} /> -->
 
     {#if isLive}
@@ -18,5 +20,8 @@
     <Station />
     <NowPlaying />
 
+</main>
+
 <style lang="scss">
+
 </style>
