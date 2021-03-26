@@ -4,11 +4,11 @@
     import Live from './modules/Live.svelte';
     import Shows from './modules/Shows.svelte';
 
-    let isLive = false;
+    let isLive = true;
 
 </script>
 
-    <Status isLive={false} />
+    <Status isLive={true} />
     {#if isLive}
         <Live />
     {/if}

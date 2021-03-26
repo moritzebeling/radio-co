@@ -12,6 +12,6 @@
             <p>and maybe list of played/sheduled tracks?</p>
         </li>
     {:else}
-        <p>No shows found</p>
+        <!-- <p>No shows found</p> -->
     {/each}
 </ol>

@@ -59,6 +59,12 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -71,6 +77,14 @@ var app = (function () {
     let current_component;
     function set_current_component(component) {
         current_component = component;
+    }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
     }
 
     const dirty_components = [];
@@ -319,6 +333,13 @@ var app = (function () {
             dispose();
         };
     }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.wholeText === data)
@@ -548,64 +569,266 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src/modules/Player.svelte";
 
-    function create_fragment$1(ctx) {
-    	let button0;
-    	let t1;
-    	let button1;
-    	let t3;
-    	let p;
-    	let t4;
-    	let t5;
-    	let mounted;
-    	let dispose;
+    // (173:64) {:else}
+    function create_else_block$1(ctx) {
+    	let t;
 
     	const block = {
     		c: function create() {
+    			t = text("Loaded");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(173:64) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (173:35) {#if !streamReady}
+    function create_if_block$1(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("Initialized");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(173:35) {#if !streamReady}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	let t0;
+    	let script0;
+    	let script0_src_value;
+    	let script1;
+    	let script1_src_value;
+    	let t1;
+    	let button0;
+    	let t3;
+    	let button1;
+    	let t5;
+    	let span0;
+    	let t6;
+    	let br0;
+    	let t7;
+    	let div0;
+    	let t8;
+    	let t9;
+    	let div1;
+    	let t10;
+    	let a;
+    	let t11;
+    	let t12;
+    	let p;
+    	let t13;
+    	let t14;
+    	let t15;
+    	let br1;
+    	let t16;
+    	let br2;
+    	let t17;
+    	let span1;
+    	let t19;
+    	let embedscript;
+    	let mounted;
+    	let dispose;
+
+    	function select_block_type(ctx, dirty) {
+    		if (!/*streamReady*/ ctx[0]) return create_if_block$1;
+    		return create_else_block$1;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			t0 = text("// !!!!! The jQuery Version used here can be used for XSS!!\n  ");
+    			script0 = element("script");
+    			script1 = element("script");
+    			t1 = space();
     			button0 = element("button");
     			button0.textContent = "Play";
-    			t1 = space();
+    			t3 = space();
     			button1 = element("button");
     			button1.textContent = "Pause";
-    			t3 = space();
+    			t5 = space();
+    			span0 = element("span");
+    			t6 = space();
+    			br0 = element("br");
+    			t7 = space();
+    			div0 = element("div");
+    			t8 = text("Player Status: ");
+    			if_block.c();
+    			t9 = space();
+    			div1 = element("div");
+    			t10 = text("Artwork: ");
+    			a = element("a");
+    			t11 = text(/*imgSrc*/ ctx[1]);
+    			t12 = space();
     			p = element("p");
-    			t4 = text("Playtime in seconds ");
-    			t5 = text(/*time*/ ctx[0]);
-    			add_location(button0, file$1, 22, 0, 326);
-    			add_location(button1, file$1, 23, 0, 370);
-    			add_location(p, file$1, 25, 0, 417);
+    			t13 = text("Playtime in seconds: ");
+    			t14 = text(/*time*/ ctx[2]);
+    			t15 = space();
+    			br1 = element("br");
+    			t16 = space();
+    			br2 = element("br");
+    			t17 = space();
+    			span1 = element("span");
+    			span1.textContent = "Embed Code";
+    			t19 = space();
+    			embedscript = element("embedscript");
+    			if (script0.src !== (script0_src_value = "https://code.jquery.com/jquery-1.11.3.min.js")) attr_dev(script0, "src", script0_src_value);
+    			add_location(script0, file$1, 3, 2, 79);
+    			if (script1.src !== (script1_src_value = "https://public.radio.co/playerapi/jquery.radiocoplayer.min.js")) attr_dev(script1, "src", script1_src_value);
+    			add_location(script1, file$1, 4, 2, 173);
+    			add_location(button0, file$1, 158, 2, 3583);
+    			add_location(button1, file$1, 159, 2, 3635);
+    			attr_dev(span0, "class", "radioplayer");
+    			attr_dev(span0, "data-src", "https://s2.radio.co/s71e070cf3/listen");
+    			attr_dev(span0, "data-playbutton", "false");
+    			attr_dev(span0, "data-volumeslider", "false");
+    			attr_dev(span0, "data-elapsedtime", "false");
+    			attr_dev(span0, "data-nowplaying", "false");
+    			attr_dev(span0, "data-showplayer", "false");
+    			attr_dev(span0, "data-albumartwork", "false");
+    			add_location(span0, file$1, 162, 0, 3689);
+    			add_location(br0, file$1, 171, 0, 3943);
+    			attr_dev(div0, "class", "status");
+    			add_location(div0, file$1, 172, 0, 3948);
+    			attr_dev(a, "href", /*imgSrc*/ ctx[1]);
+    			add_location(a, file$1, 173, 30, 4067);
+    			attr_dev(div1, "class", "artwork");
+    			add_location(div1, file$1, 173, 0, 4037);
+    			add_location(p, file$1, 176, 0, 4109);
+    			add_location(br1, file$1, 179, 0, 4146);
+    			add_location(br2, file$1, 180, 0, 4151);
+    			add_location(span1, file$1, 181, 0, 4156);
+    			add_location(embedscript, file$1, 182, 0, 4180);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, button0, anchor);
+    			append_dev(document.head, t0);
+    			append_dev(document.head, script0);
+    			append_dev(document.head, script1);
     			insert_dev(target, t1, anchor);
-    			insert_dev(target, button1, anchor);
+    			insert_dev(target, button0, anchor);
     			insert_dev(target, t3, anchor);
+    			insert_dev(target, button1, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, span0, anchor);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, br0, anchor);
+    			insert_dev(target, t7, anchor);
+    			insert_dev(target, div0, anchor);
+    			append_dev(div0, t8);
+    			if_block.m(div0, null);
+    			insert_dev(target, t9, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, t10);
+    			append_dev(div1, a);
+    			append_dev(a, t11);
+    			insert_dev(target, t12, anchor);
     			insert_dev(target, p, anchor);
-    			append_dev(p, t4);
-    			append_dev(p, t5);
+    			append_dev(p, t13);
+    			append_dev(p, t14);
+    			insert_dev(target, t15, anchor);
+    			insert_dev(target, br1, anchor);
+    			insert_dev(target, t16, anchor);
+    			insert_dev(target, br2, anchor);
+    			insert_dev(target, t17, anchor);
+    			insert_dev(target, span1, anchor);
+    			insert_dev(target, t19, anchor);
+    			insert_dev(target, embedscript, anchor);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(button0, "click", handlePlay, false, false, false),
-    					listen_dev(button1, "click", handlePause, false, false, false)
+    					listen_dev(script0, "load", /*jqueryLoaded*/ ctx[3], false, false, false),
+    					listen_dev(script1, "load", /*radiocoPlayerAPILoaded*/ ctx[4], false, false, false),
+    					listen_dev(button0, "click", /*handlePlayButton*/ ctx[5], false, false, false),
+    					listen_dev(button1, "click", /*handlePauseButton*/ ctx[6], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*time*/ 1) set_data_dev(t5, /*time*/ ctx[0]);
+    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(div0, null);
+    				}
+    			}
+
+    			if (dirty & /*imgSrc*/ 2) set_data_dev(t11, /*imgSrc*/ ctx[1]);
+
+    			if (dirty & /*imgSrc*/ 2) {
+    				attr_dev(a, "href", /*imgSrc*/ ctx[1]);
+    			}
+
+    			if (dirty & /*time*/ 4) set_data_dev(t14, /*time*/ ctx[2]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(button0);
+    			detach_dev(t0);
+    			detach_dev(script0);
+    			detach_dev(script1);
     			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(button1);
+    			if (detaching) detach_dev(button0);
     			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(button1);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(span0);
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(br0);
+    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(div0);
+    			if_block.d();
+    			if (detaching) detach_dev(t9);
+    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(t12);
     			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t15);
+    			if (detaching) detach_dev(br1);
+    			if (detaching) detach_dev(t16);
+    			if (detaching) detach_dev(br2);
+    			if (detaching) detach_dev(t17);
+    			if (detaching) detach_dev(span1);
+    			if (detaching) detach_dev(t19);
+    			if (detaching) detach_dev(embedscript);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -622,18 +845,127 @@ var app = (function () {
     	return block;
     }
 
-    function handlePlay() {
-    	console.log("play");
-    }
-
-    function handlePause() {
-    	console.log("pause");
-    }
-
     function instance$1($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Player", slots, []);
+    	let mounted = false;
+    	let jqueryReady = false;
+    	let radiocoPlayerAPIReady = false;
+    	var radiocoPlayer = null;
+
+    	onMount(() => {
+    		mounted = true;
+    		console.log("Mounted");
+
+    		if (everythingReady()) {
+    			initRadiocoPlayer();
+    		}
+    	});
+
+    	function jqueryLoaded() {
+    		jqueryReady = true;
+    		console.log("jQuery Loaded");
+
+    		if (everythingReady()) {
+    			initRadiocoPlayer();
+    		}
+    	}
+
+    	function radiocoPlayerAPILoaded() {
+    		radiocoPlayerAPIReady = true;
+    		console.log("RadioCo Player API Loaded");
+
+    		if (everythingReady()) {
+    			initRadiocoPlayer();
+    		}
+    	}
+
+    	function everythingReady() {
+    		if (mounted && jqueryReady && radiocoPlayerAPIReady) return true; else return false;
+    	}
+
+    	function initRadiocoPlayer() {
+    		radiocoPlayer = window.$(".radioplayer").radiocoPlayer(); // $ is reserved for svelte. Use window.$ for jquery instead
+    		console.log("Init radioplayer");
+    		createRadiocoPlayerEventHandlers();
+    	}
+
+    	
+    	let radiocoStatusAPIReady = false;
+    	let statusEmbed;
+
+    	function radiocoStatusAPILoaded() {
+    		radiocoStatusAPIReady = true;
+    		console.log("RadioCo Status API Loaded");
+    	}
+
+    	// ..............................................
+    	// Create Player Event Handlers
+    	// ..............................................
+    	let streamReady = false;
+
+    	let audioPlaying = false;
     	let seconds = 0;
+    	let imgSrc = "No Artwork";
+
+    	function createRadiocoPlayerEventHandlers() {
+    		radiocoPlayer.event("audioLoaded", function () {
+    			$$invalidate(0, streamReady = true);
+    			$$invalidate(1, imgSrc = radiocoPlayer.getArtwork(500, 500, 75));
+    			console.log("Radio stream has loaded");
+    		});
+
+    		radiocoPlayer.event("audioPlay", function () {
+    			audioPlaying = true;
+    			console.log("Audio start requested");
+    		});
+
+    		radiocoPlayer.event("audioPause", function () {
+    			audioPlaying = false;
+    			console.log("Audio pause requested");
+    		});
+
+    		radiocoPlayer.event("timeUpdate", function (e) {
+    			$$invalidate(7, seconds = e.newTime);
+    		});
+
+    		window.$(".radioplayer").onplay = function () {
+    			audioPlaying = false;
+    			console.log("Audio starting");
+    		};
+    	}
+
+    	
+
+    	// ..............................................
+    	// Create Player Interactions
+    	// ..............................................
+    	function getStreamStatus() {
+    		if (streamReady) {
+    			let streamStatus = radiocoPlayer.getStreamState();
+    			console.log(streamStatus);
+    		}
+    	}
+
+    	/*
+    event handlers
+    */
+    	function handlePlayButton() {
+    		console.log("Play button clicked");
+
+    		if (streamReady) {
+    			radiocoPlayer.play();
+    		}
+    	}
+
+    	function handlePauseButton() {
+    		console.log("Pause button clicked");
+
+    		if (streamReady) {
+    			radiocoPlayer.pause();
+    		}
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -641,16 +973,42 @@ var app = (function () {
     	});
 
     	$$self.$capture_state = () => ({
+    		onMount,
     		parseTime,
-    		handlePlay,
-    		handlePause,
+    		mounted,
+    		jqueryReady,
+    		radiocoPlayerAPIReady,
+    		radiocoPlayer,
+    		jqueryLoaded,
+    		radiocoPlayerAPILoaded,
+    		everythingReady,
+    		initRadiocoPlayer,
+    		radiocoStatusAPIReady,
+    		statusEmbed,
+    		radiocoStatusAPILoaded,
+    		streamReady,
+    		audioPlaying,
     		seconds,
+    		imgSrc,
+    		createRadiocoPlayerEventHandlers,
+    		getStreamStatus,
+    		handlePlayButton,
+    		handlePauseButton,
     		time
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("seconds" in $$props) $$invalidate(1, seconds = $$props.seconds);
-    		if ("time" in $$props) $$invalidate(0, time = $$props.time);
+    		if ("mounted" in $$props) mounted = $$props.mounted;
+    		if ("jqueryReady" in $$props) jqueryReady = $$props.jqueryReady;
+    		if ("radiocoPlayerAPIReady" in $$props) radiocoPlayerAPIReady = $$props.radiocoPlayerAPIReady;
+    		if ("radiocoPlayer" in $$props) radiocoPlayer = $$props.radiocoPlayer;
+    		if ("radiocoStatusAPIReady" in $$props) radiocoStatusAPIReady = $$props.radiocoStatusAPIReady;
+    		if ("statusEmbed" in $$props) statusEmbed = $$props.statusEmbed;
+    		if ("streamReady" in $$props) $$invalidate(0, streamReady = $$props.streamReady);
+    		if ("audioPlaying" in $$props) audioPlaying = $$props.audioPlaying;
+    		if ("seconds" in $$props) $$invalidate(7, seconds = $$props.seconds);
+    		if ("imgSrc" in $$props) $$invalidate(1, imgSrc = $$props.imgSrc);
+    		if ("time" in $$props) $$invalidate(2, time = $$props.time);
     	};
 
     	let time;
@@ -659,8 +1017,22 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	 $$invalidate(0, time = parseTime(seconds));
-    	return [time];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*seconds*/ 128) {
+    			 $$invalidate(2, time = parseTime(seconds));
+    		}
+    	};
+
+    	return [
+    		streamReady,
+    		imgSrc,
+    		time,
+    		jqueryLoaded,
+    		radiocoPlayerAPILoaded,
+    		handlePlayButton,
+    		handlePauseButton,
+    		seconds
+    	];
     }
 
     class Player extends SvelteComponentDev {
@@ -687,26 +1059,12 @@ var app = (function () {
     }
 
     // (17:4) {:else}
-    function create_else_block$1(ctx) {
-    	let p;
-
-    	const block = {
-    		c: function create() {
-    			p = element("p");
-    			p.textContent = "No tracks found";
-    			add_location(p, file$2, 17, 8, 287);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
-    		}
-    	};
+    function create_else_block$2(ctx) {
+    	const block = { c: noop, m: noop, d: noop };
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$1.name,
+    		id: create_else_block$2.name,
     		type: "else",
     		source: "(17:4) {:else}",
     		ctx
@@ -776,7 +1134,7 @@ var app = (function () {
     	let each_1_else = null;
 
     	if (!each_value.length) {
-    		each_1_else = create_else_block$1(ctx);
+    		each_1_else = create_else_block$2(ctx);
     	}
 
     	const block = {
@@ -842,7 +1200,7 @@ var app = (function () {
     						each_1_else = null;
     					}
     				} else if (!each_1_else) {
-    					each_1_else = create_else_block$1(ctx);
+    					each_1_else = create_else_block$2(ctx);
     					each_1_else.c();
     					each_1_else.m(ol, null);
     				}
@@ -937,26 +1295,12 @@ var app = (function () {
     }
 
     // (14:4) {:else}
-    function create_else_block$2(ctx) {
-    	let p;
-
-    	const block = {
-    		c: function create() {
-    			p = element("p");
-    			p.textContent = "No shows found";
-    			add_location(p, file$3, 14, 8, 257);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
-    		}
-    	};
+    function create_else_block$3(ctx) {
+    	const block = { c: noop, m: noop, d: noop };
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$2.name,
+    		id: create_else_block$3.name,
     		type: "else",
     		source: "(14:4) {:else}",
     		ctx
@@ -1022,7 +1366,7 @@ var app = (function () {
     	let each_1_else = null;
 
     	if (!each_value.length) {
-    		each_1_else = create_else_block$2(ctx);
+    		each_1_else = create_else_block$3(ctx);
     	}
 
     	const block = {
@@ -1082,7 +1426,7 @@ var app = (function () {
     						each_1_else = null;
     					}
     				} else if (!each_1_else) {
-    					each_1_else = create_else_block$2(ctx);
+    					each_1_else = create_else_block$3(ctx);
     					each_1_else.c();
     					each_1_else.m(ol, null);
     				}
@@ -1160,7 +1504,7 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.31.0 */
 
     // (12:4) {#if isLive}
-    function create_if_block$1(ctx) {
+    function create_if_block$2(ctx) {
     	let live;
     	let current;
     	live = new Live({ $$inline: true });
@@ -1189,7 +1533,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block$2.name,
     		type: "if",
     		source: "(12:4) {#if isLive}",
     		ctx
@@ -1204,8 +1548,8 @@ var app = (function () {
     	let t1;
     	let shows;
     	let current;
-    	status = new Status({ props: { isLive: false }, $$inline: true });
-    	let if_block = /*isLive*/ ctx[0] && create_if_block$1(ctx);
+    	status = new Status({ props: { isLive: true }, $$inline: true });
+    	let if_block = /*isLive*/ ctx[0] && create_if_block$2(ctx);
     	shows = new Shows({ $$inline: true });
 
     	const block = {
@@ -1264,7 +1608,7 @@ var app = (function () {
     function instance$4($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	let isLive = false;
+    	let isLive = true;
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
