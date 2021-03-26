@@ -1,18 +1,26 @@
 <script>
 
-    import Status from './modules/Status.svelte';
     import Live from './modules/Live.svelte';
-    import Shows from './modules/Shows.svelte';
+    import Offline from './modules/Offline.svelte';
 
-    let isLive = false;
+    let live = true;
 
 </script>
 
-    <Status isLive={false} />
-    {#if isLive}
+{#if live}
+    <div class="container">
         <Live />
-    {/if}
-    <Shows />
+    </div>
+{:else}
+    <Offline />
+{/if}
 
 <style lang="scss">
+
+    .container {
+        margin: 2rem;
+        padding: 2rem;
+        border: 1px solid #000;
+    }
+
 </style>
