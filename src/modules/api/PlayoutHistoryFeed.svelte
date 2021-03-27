@@ -8,15 +8,17 @@
 
 </script>
 
-<Load {url} let:prop={data}>
-    <section>
+<section>
 
-        <header>
-            <h1>Playout History Feed API</h1>
-            <p>list of all played <i>tracks</i></p>
-        </header>
+    <header>
+        <h1>Playout History Feed API</h1>
+        <p>list of all played <i>tracks</i></p>
+    </header>
+
+    <Load {url} let:prop={data}>
 
         <InspectData {data} />
 
-    </section>
-</Load>
+    </Load>
+
+</section>

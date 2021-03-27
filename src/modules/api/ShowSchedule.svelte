@@ -4,15 +4,17 @@
     import InspectData from '../InspectData.svelte';
 
     export let host;
-    const url = `${host}/api/shows`;
+    export let show;
+
+    const url = `${host}/api/show-schedules?show_id=${show}`;
 
 </script>
 
 <section>
 
     <header>
-        <h1>Shows API</h1>
-        <p>list of all <i>shows</i></p>
+        <h1>Show schedule API</h1>
+        <p>Gives some information about one <i>show</i></p>
     </header>
 
     <Load {url} let:prop={data}>

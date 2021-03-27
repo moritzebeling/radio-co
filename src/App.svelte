@@ -10,6 +10,8 @@
     import StationMetaData from './modules/api/StationMetaData.svelte';
     import Shows from './modules/api/Shows.svelte';
     import PlayoutHistoryFeed from './modules/api/PlayoutHistoryFeed.svelte';
+    import ShowTracks from './modules/api/ShowTracks.svelte';
+    import ShowSchedule from './modules/api/ShowSchedule.svelte';
 
     /* Custom Player */
 
@@ -21,7 +23,10 @@
 
 <main>
 
-    <a class="button" href={host} target="_blank">Radio Station</a>
+    <header>
+        <h1><i>{host}</i></h1>
+        <a class="button" href={host} target="_blank">Radio Station Website</a>
+    </header>
 
     <div class="widgets">
         <Player {host} />
@@ -29,14 +34,26 @@
     </div>
 
     <div class="api">
+        <!-- general -->
         <LiveInfo {host} />
         <WeekInfo {host} />
         <StationMetaData {host} />
         <Shows {host} />
         <PlayoutHistoryFeed {host} />
+
+        <!-- specific to one show -->
+        <ShowTracks {host} show={1} />
+        <ShowSchedule {host} show={1} />
     </div>
 
 </main>
 
 <style lang="scss">
+
+    header {
+        margin: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
 </style>

@@ -8,15 +8,17 @@
 
 </script>
 
-<Load {url} let:prop={data}>
-    <section>
+<section>
 
-        <header>
-            <h1>Station MetaData API</h1>
-            <p><i>station</i> data, including 2 <i>stream</i> endpoints</p>
-        </header>
+    <header>
+        <h1>Station MetaData API</h1>
+        <p><i>station</i> data, including 2 <i>stream</i> endpoints</p>
+    </header>
+
+    <Load {url} let:prop={data}>
 
         <InspectData {data} />
 
-    </section>
-</Load>
+    </Load>
+
+</section>

@@ -8,22 +8,24 @@
 
 </script>
 
-<Load {url} let:prop={data}>
-    <section>
+<section>
 
-        <header>
-            <h1>Live Info API</h1>
-            <ol>
-                <li><i>station</i> status</li>
-                <li>list of current, past and next <i>track</i></li>
-                <li><i>show</i> info</li>
-            </ol>
-        </header>
+    <header>
+        <h1>Live Info API</h1>
+        <ol>
+            <li><i>station</i> status</li>
+            <li>list of current, past and next <i>track</i></li>
+            <li><i>show</i> info</li>
+        </ol>
+    </header>
+
+    <Load {url} let:prop={data}>
 
         <InspectData {data} />
 
-    </section>
-</Load>
+    </Load>
+
+</section>
 
 <style lang="scss">
 
