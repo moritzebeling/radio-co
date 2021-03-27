@@ -10,8 +10,8 @@
 <main>
 
     <div class="widgets">
-        <Player />
-        <Schedule />
+        <Player {id} />
+        <Schedule {id} />
     </div>
 
     <a class="button" href="https://{id}.airtime.pro" target="_blank">Radio Station</a>
