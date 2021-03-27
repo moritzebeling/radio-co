@@ -5,18 +5,9 @@
 
 </script>
 
-<div>
+<section>
     <iframe {src} title="Player" frameborder="0" width="350" height="396"></iframe>
-</div>
+</section>
 
 <style>
-
-    div {
-        margin: 1rem;
-    }
-
-    iframe {
-        border: 1px solid #000;
-    }
-
 </style>

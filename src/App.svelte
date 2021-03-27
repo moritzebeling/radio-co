@@ -19,14 +19,14 @@
 
     <a class="button" href={host} target="_blank">Radio Station</a>
 
-    <section class="widgets">
+    <div class="widgets">
         <Player {host} />
         <Schedule {host} />
-    </section>
+    </div>
 
-    <section class="api">
+    <div class="api">
         <LiveInfo {host} />
-    </section>
+    </div>
 
 </main>
 

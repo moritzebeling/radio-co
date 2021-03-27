@@ -5,18 +5,9 @@
 
 </script>
 
-<div>
+<section>
     <iframe {src} title="Schedule" height="400px" width="550px" scrolling="yes" frameborder="0"></iframe>
-</div>
+</section>
 
 <style>
-
-    div {
-        margin: 1rem;
-    }
-
-    iframe {
-        border: 1px solid #000;
-    }
-
 </style>

@@ -1,6 +1,7 @@
 <script>
 
     import Load from './Load.svelte';
+    import InspectData from './InspectData.svelte';
 
     export let host;
     const url = `${host}/api/live-info-v2`;
@@ -13,15 +14,11 @@
 </script>
 
 <Load {url} let:prop={data}>
-
     <section>
 
-        <h1>Playlists</h1>
-        <button on:click={toggle}>Toggle</button>
-        {#if show}
-            <pre>{JSON.stringify( data, null, 2 )}</pre>
-        {/if}
+        <h1>Live Info API</h1>
+
+        <InspectData {data} />
 
     </section>
-
 </Load>
