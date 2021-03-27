@@ -5,13 +5,15 @@
     import Schedule from './widgets/Schedule.svelte';
 
     /* API */
-    import LiveInfo from './modules/api/LiveInfo.svelte';
-    import WeekInfo from './modules/api/WeekInfo.svelte';
-    import StationMetaData from './modules/api/StationMetaData.svelte';
-    import Shows from './modules/api/Shows.svelte';
-    import PlayoutHistoryFeed from './modules/api/PlayoutHistoryFeed.svelte';
-    import ShowTracks from './modules/api/ShowTracks.svelte';
-    import ShowSchedule from './modules/api/ShowSchedule.svelte';
+    import LiveInfo from './modules/api-examples/LiveInfo.svelte';
+    import WeekInfo from './modules/api-examples/WeekInfo.svelte';
+    import StationMetaData from './modules/api-examples/StationMetaData.svelte';
+    import Shows from './modules/api-examples/Shows.svelte';
+    import PlayoutHistoryFeed from './modules/api-examples/PlayoutHistoryFeed.svelte';
+    import ShowTracks from './modules/api-examples/ShowTracks.svelte';
+    import ShowSchedule from './modules/api-examples/ShowSchedule.svelte';
+
+    import CurrentlyPlaying from './modules/CurrentlyPlaying.svelte';
 
     /* Custom Player */
 
@@ -34,6 +36,8 @@
     </div>
 
     <div class="api">
+        <CurrentlyPlaying {host} />
+
         <!-- general -->
         <LiveInfo {host} />
         <WeekInfo {host} />
