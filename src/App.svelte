@@ -1,6 +1,8 @@
 <script>
 
-    import Player from './widgets/Player.svelte';
+    import Player from './modules/Player.svelte';
+
+    import EmbedPlayer from './widgets/EmbedPlayer.svelte';
     import Schedule from './widgets/Schedule.svelte';
 
     const id = 'eosradiohidden';
@@ -9,8 +11,12 @@
 
 <main>
 
-    <div class="widgets">
+    <div class="modules">
         <Player {id} />
+    </div>
+
+    <div class="widgets">
+        <EmbedPlayer {id} />
         <Schedule {id} />
     </div>
 
