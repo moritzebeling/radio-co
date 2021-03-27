@@ -1,35 +1,22 @@
 <script>
 
-    //import Status from './modules/Status.svelte';
-    import Live from './modules/Live.svelte';
-    import Station from './modules/Station.svelte';
-    import History from './modules/History.svelte';
-    import Schedule from './modules/Schedule.svelte';
-    import Playlists from './modules/Playlists.svelte';
-    import Queue from './modules/Queue.svelte';
-    import NowPlaying from './modules/NowPlaying.svelte';
+    import Player from './widgets/Player.svelte';
+    import Schedule from './widgets/Schedule.svelte';
 
-    let isLive = true;
+    const id = 'eosradiohidden';
 
 </script>
 
 <main>
 
-    <!-- <Status isLive={false} /> -->
+    <div class="widgets">
+        <Player />
+        <Schedule />
+    </div>
 
-    {#if isLive}
-        <Live />
-    {/if}
-
-    <Station />
-    <Schedule />
-    <History />
-    <Playlists />
-    <Queue />
-    <NowPlaying />
+    <a class="button" href="https://{id}.airtime.pro" target="_blank">Radio Station</a>
 
 </main>
 
 <style lang="scss">
-
 </style>
