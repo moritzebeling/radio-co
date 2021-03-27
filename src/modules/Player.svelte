@@ -104,7 +104,8 @@
         autoplay: false,
         loop: false,
         volume: 1,
-        onplay: handleSoundStart
+        onplay: handleSoundStart,
+        onpause: handleSoundStop
       });
 
       audioPlayerExists = true;
@@ -117,7 +118,7 @@
 
   function removeAudioPlayer() {
     if(audioPlayer !== null){
-    audioPlayer.unload();       //Unload and destroy a Howl object. This will immediately stop all sounds attached to this sound and remove it from the cache.
+    audioPlayer.unload();       // Unload and destroy a Howl object. This will immediately stop all sounds attached to this sound and remove it from the cache.
     audioPlayer = null;         // JS got garbage collector, so throwing away the pointer is enough
     audioPlayerExists = false;
     }
@@ -141,22 +142,30 @@
       createAudioPlayer(audio);
   }
 
-
+  var playLock = false;
   function handlePlay(){
+    if(!playLock){
+      playLock = true;
       buffering = true;
       audioPlayer.play();
       console.log('Pressed play');
+    }
   }
 
   function handlePause(){
       audioPlayer.pause();
-      console.log('pause');
+      console.log('Pressed pause');
   }
 
   function handleSoundStart(){
       buffering = false;
       loaded = true;
       console.log('Sound start');
+  }
+
+  function handleSoundStop(){
+      playLock = false;
+      console.log('Sound stop');
   }
 
   /*
@@ -230,8 +239,14 @@
     <div class="player">
       <h3>Player</h3>
       <br>
-      <button on:click={handlePlay}>Play</button>
-      <button on:click={handlePause}>Pause</button>
+      {#if !playLock}
+        <button          on:click={handlePlay}>Play</button>
+        <button disabled on:click={handlePause}>Pause</button>
+      {:else if playLock}
+        <button disabled on:click={handlePlay}>Play</button>
+        <button          on:click={handlePause}>Pause</button>
+      {/if}
+
       <br>
       <br>
 
