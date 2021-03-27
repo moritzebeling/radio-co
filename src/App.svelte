@@ -5,7 +5,11 @@
     import Schedule from './widgets/Schedule.svelte';
 
     /* API */
-    import LiveInfo from './modules/LiveInfo.svelte';
+    import LiveInfo from './modules/api/LiveInfo.svelte';
+    import WeekInfo from './modules/api/WeekInfo.svelte';
+    import StationMetaData from './modules/api/StationMetaData.svelte';
+    import Shows from './modules/api/Shows.svelte';
+    import PlayoutHistoryFeed from './modules/api/PlayoutHistoryFeed.svelte';
 
     /* Custom Player */
 
@@ -26,6 +30,10 @@
 
     <div class="api">
         <LiveInfo {host} />
+        <WeekInfo {host} />
+        <StationMetaData {host} />
+        <Shows {host} />
+        <PlayoutHistoryFeed {host} />
     </div>
 
 </main>
