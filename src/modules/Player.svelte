@@ -6,14 +6,15 @@
 
   var audioPlayer = null;
   var timestamp = new Date().getTime();
-  var radioUrl ="https://eosradiohidden.out.airtime.pro";
 
+  export let id;
+  var radioUrl = `https://${id}.out.airtime.pro`;
 
   ////////////////////////////////
   // Stream
   ///////////////////////////////
 
-  var radioStreamUrl = radioUrl + "/eosradiohidden_a?i" + timestamp; // Port has to be explicit
+  var radioStreamUrl = radioUrl + `/${id}_a?i` + timestamp; // Port has to be explicit
                                                                    // Time stamp to trick chrome -> Apparently helps freeing audio sockets
 
   // Audio "object". Can be stream, can be mp3 file, etc.

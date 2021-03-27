@@ -40,15 +40,35 @@ h1 {
 }
 
 section {
-	margin: 2rem;
+	margin: 1rem;
 	border-radius: 1rem;
 	padding: 0.5rem;
 	background-color: #eee;
+	header {
+		margin-bottom: 1rem;
+		h1, h2, h3 {
+			margin-bottom: 1rem;
+		}
+	}
 }
 
 .button {
-	margin: 1rem;
 	padding: 0.5em 1em;
 	border: 1px solid currentColor;
 	border-radius: 2em;
+}
+
+i {
+	font-family: monospace;
+	background-color: aqua;
+	border-radius: 0.3em;
+	padding: 0.1em 0.2em;
+}
+
+ol li {
+	list-style-type: disc;
+	list-style-position: inside;
+	+ li {
+		margin-top: 0.25em;
+	}
 }

@@ -1,21 +1,16 @@
 <script>
 
-    export let id;
+    export let host;
+    const src = `${host}/embed/weekly-program`;
 
 </script>
 
-<div>
-    <iframe height="400px" width="550px" title="Schedule" scrolling="yes" frameborder="0" src="https://{id}.airtime.pro/embed/weekly-program"></iframe>
-</div>
+<section>
+    <header>
+        <h1>Schedule Widget</h1>
+    </header>
+    <iframe {src} title="Schedule" height="400px" width="550px" scrolling="yes" frameborder="0"></iframe>
+</section>
 
 <style>
-
-    div {
-        margin: 1rem;
-    }
-
-    iframe {
-        border: 1px solid #000;
-    }
-
 </style>
