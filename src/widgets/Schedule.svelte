@@ -1,11 +1,12 @@
 <script>
 
-    export let id;
+    export let host;
+    const src = `${host}/embed/weekly-program`;
 
 </script>
 
 <div>
-    <iframe height="400px" width="550px" title="Schedule" scrolling="yes" frameborder="0" src="https://{id}.airtime.pro/embed/weekly-program"></iframe>
+    <iframe {src} title="Schedule" height="400px" width="550px" scrolling="yes" frameborder="0"></iframe>
 </div>
 
 <style>

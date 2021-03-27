@@ -1,11 +1,12 @@
 <script>
 
-    export let id;
+    export let host;
+    const src = `${host}/embed/player?stream=auto&skin=2`;
 
 </script>
 
 <div>
-    <iframe id="embed_player" frameborder="0" title="Player" width="350" height="396" src="https://{id}.airtime.pro/embed/player?stream=auto&skin=2"></iframe>
+    <iframe {src} title="Player" frameborder="0" width="350" height="396"></iframe>
 </div>
 
 <style>
