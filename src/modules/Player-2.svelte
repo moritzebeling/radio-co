@@ -1,20 +1,19 @@
 <script>
 
-	import { Howl, Howler } from 'howler';
-	import { onMount }  from 'svelte';
-	import { parseTime } from '../utilities/time.js';
-
-	export let id;
-	const timestamp = new Date().getTime();
-	const stream = `${id}_a`;
-	const src = `https://${id}.out.airtime.pro/${stream}?i${timestamp}`;
-	console.log( stream );
-
-	let status = 'loading';
-
 	/*
 	* https://github.com/goldfire/howler.js#options
 	*/
+
+	import { Howl, Howler } from 'howler';
+
+	export let id;
+
+	const timestamp = new Date().getTime();
+	const stream = `${id}_a`;
+	const src = `https://${id}.out.airtime.pro/${stream}?i${timestamp}`;
+
+	console.log( src );
+	let status = 'loading';
 
 	function setStatus( set ){
 		switch (set) {
@@ -67,14 +66,15 @@
 	});
 
 	function handlePlay(){
-		if( !radio.playing() ){
+		if( radio.playing() ){
+			setStatus('playing');
+		} else {
 			setStatus('loading');
 			radio.play();
-		} else {
-			setStatus('playing');
 		}
 		radio.volume(1);
 	}
+
 	function handlePause(){
 		radio.volume(0);
 		setStatus('ready');
