@@ -29,6 +29,7 @@
 				break;
 			default:
 				console.warn(`Unknown status "${set}"`);
+				status = 'error';
 				break;
 		}
 	}
