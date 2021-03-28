@@ -1,8 +1,5 @@
 <script>
 
-
-    import Player from './modules/Player.svelte';
-
     /* Airtime Pro Widgets */
     import EmbedPlayer from './widgets/EmbedPlayer.svelte';
     import Schedule from './widgets/Schedule.svelte';
@@ -19,6 +16,8 @@
     import CurrentlyPlaying from './modules/CurrentlyPlaying.svelte';
 
     /* Custom Player */
+    import Player1 from './modules/Player.svelte';
+    import Player2 from './modules/Player-2.svelte';
 
     /* Config */
     const id = 'eosradiohidden';
@@ -39,9 +38,9 @@
     </div>
 
     <div class="player">
-      <Player {id} />
+      <Player1 {id} />
+      <Player2 {id} />
     </div>
-
 
     <div class="api">
         <CurrentlyPlaying {host} />
