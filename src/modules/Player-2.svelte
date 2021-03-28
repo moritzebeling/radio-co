@@ -4,7 +4,7 @@
 	* https://github.com/goldfire/howler.js#options
 	*/
 
-	import { onDestroy } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { Howl, Howler } from 'howler';
 
 	Howler.autoUnlock = false;
@@ -70,6 +70,15 @@
 		},
 	});
 
+	onMount(()=>{
+		radio.load();
+	});
+
+	onDestroy(()=>{
+		radio.unload();
+		setStatus('ended');
+	});
+
 	function handlePlay(){
 		if( radio.playing() ){
 			setStatus('playing');
@@ -84,11 +93,6 @@
 		radio.volume(0);
 		setStatus('ready');
 	}
-
-	onDestroy(()=>{
-		radio.unload();
-		setStatus('ended');
-	});
 
 </script>
 

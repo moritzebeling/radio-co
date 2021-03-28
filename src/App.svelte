@@ -38,7 +38,7 @@
     </div>
 
     <div class="player">
-      <Player1 {id} />
+      <!-- <Player1 {id} /> -->
       <Player2 {id} />
     </div>
 
