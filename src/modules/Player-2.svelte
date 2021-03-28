@@ -4,7 +4,10 @@
 	* https://github.com/goldfire/howler.js#options
 	*/
 
+	import { onDestroy } from 'svelte';
 	import { Howl, Howler } from 'howler';
+
+	Howler.autoUnlock = false;
 
 	export let id;
 
@@ -30,8 +33,9 @@
 		}
 	}
 
-	const radio = new Howl({
+	let radio = new Howl({
 		src: src,
+		preload: false,
 		html5: true,
 		format: ['mp3'],
 		volume: 1,
@@ -79,6 +83,11 @@
 		radio.volume(0);
 		setStatus('ready');
 	}
+
+	onDestroy(()=>{
+		radio.unload();
+		setStatus('ended');
+	});
 
 </script>
 
