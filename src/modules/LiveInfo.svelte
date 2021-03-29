@@ -28,7 +28,7 @@
 
   let updateLiveInfo = setInterval(()=>{
       fetchLiveInfo();
-  }, 3 * 1000);
+  }, 20 * 1000);
 
 
 
@@ -67,14 +67,14 @@
         end : this.tracks.previous.ends
       } : null;
 
-      this.silent = this.current_track === null ? true : false;
+      this.silent = this.currentTrack === null ? true : false;
     }
 
     getTimeLeftCurrentTrack(){
       if(this.currentTrack){
         let now = new Date();
         let end = new Date(this.currentTrack.end);
-        let timeDiff = Math.abs(end - now);
+        let timeDiff = end - now;
         return timeDiff;
       }
       else{
@@ -86,8 +86,8 @@
       if(this.nextTrack)
       {
         let now = new Date();
-        let start = new Date(this.currentTrack.start);
-        let timeDiff = Math.abs(start - now);
+        let start = new Date(this.nextTrack.start);
+        let timeDiff = start - now;
         return timeDiff;
       }
       else{
@@ -103,6 +103,12 @@
   let updateSecondsSinceLiveInfoUpdate = setInterval(()=>{
     secondsLeftCurrentTrack = liveInfo.getTimeLeftCurrentTrack()/1000;
     secondsUntilNextTrack = liveInfo.getTimeUntilNextTrack()/1000;
+
+    if(secondsLeftCurrentTrack <= 0 || secondsUntilNextTrack <= 0){
+      fetchLiveInfo();
+    }
+
+
   }, 1000);
 
 
