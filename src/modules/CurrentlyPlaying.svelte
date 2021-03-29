@@ -1,40 +1,33 @@
 <script>
 
-    import { load } from '../utilities/load.js';
-    import InspectData from './InspectData.svelte';
-
     export let host;
 
-    let loaded = false;
-    let data;
-
-    async function triggerFetch(){
-        console.log('fetch');
-        data = await load(`${host}/api/live-info-v2`);
-        loaded = true;
-    }
-    triggerFetch();
-
-    let updateInterval = setInterval(()=>{
-        triggerFetch();
-    }, 20*1000);
+    import LiveInfo from './LiveInfo.svelte';
 
 </script>
 
 <section>
 
-    <p>[Placeholder for currently playing track (artist, title, time)]</p>
-
-    {#if loaded}
-
+    {#if true}
+        Station status:
+        <div class="info">
+          <LiveInfo {host} info={"station_status"} />
+        </div>
         Current:
-        <InspectData data={data.tracks.current} />
+        <div class="info">
+          <LiveInfo {host} info={"current_track"} />
+        </div>
         Next:
-        <InspectData data={data.tracks.next} />
+        <div class="info">
+          <LiveInfo {host} info={"next_track"} />
+        </div>
 
     {/if}
 
 </section>
 
 <style lang="scss">
+  .info{
+    margin-left:1em;
+  }
 </style>

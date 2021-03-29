@@ -7,6 +7,8 @@
         show = !show;
     }
 
+
+
 </script>
 
 <button on:click={toggle}>Inspect Data</button>
