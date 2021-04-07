@@ -59,3 +59,7 @@ Example API result:
 npm install
 npm run dev
 ```
+
+## Warning
+
+⚠️ This is just a dummy that you can build upon. Do not use this for production before verifying everything yourself.
