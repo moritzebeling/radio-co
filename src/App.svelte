@@ -1,37 +1,30 @@
 <script>
 
-  import { Router, Link, Route } from "svelte-routing";
+	import Radio from "./radio/Radio.svelte";
+	const id = 's21c5fbf27';
 
-  import RadioCo from "./routes/RadioCo.svelte";
-  import AirtimePro from "./routes/AirtimePro.svelte";
-
-  export let url = "";
 </script>
 
-<Router url="{url}">
+<header>
+	<h1>Radio.co</h1>
+	<pre>Station {id}</pre>
+</header>
 
-  <nav>
-    <Link to="radio-co">Radio.co</Link>
-    <Link to="airtime-pro">Airtime Pro</Link>
-  </nav>
-
-  <div>
-    <Route path="radio-co" component="{RadioCo}" />
-    <Route path="airtime-pro" component="{AirtimePro}" />
-  </div>
-
-</Router>
+<main>
+	<Radio {id} />
+</main>
 
 <style lang="scss">
 
-  nav {
-    padding: 0.5rem;
-    :global( a ){
-      padding: 0.5rem;
-      display: inline-block;
-      margin: 0.5rem;
-      border: 1px solid #000;
-    }
-  }
+	header, main {
+		margin: 1rem;
+	}
+	header {
+		display: flex;
+		align-items: center;
+		pre {
+			margin-left: 0.5em;
+		}
+	}
 
 </style>

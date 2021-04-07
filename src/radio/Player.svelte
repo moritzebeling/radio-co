@@ -11,9 +11,6 @@
 
 	export let src;
 
-	const timestamp = new Date().getTime();
-
-	console.log( src );
 	let status = 'loading';
 
 	function setStatus( set ){
@@ -33,7 +30,7 @@
 	}
 
 	let radio = new Howl({
-		src: `${src}?i${timestamp}`,
+		src: `${src}?i${new Date().getTime()}`,
 		preload: false,
 		html5: true,
 		format: ['mp3'],
@@ -94,7 +91,7 @@
 
 </script>
 
-<section>
+<div>
 
 	{#if status === 'loading'}
 		<p>Loading...</p>
@@ -108,7 +105,7 @@
 		<p>Error</p>
 	{/if}
 
-</section>
+</div>
 
 <style>
 
