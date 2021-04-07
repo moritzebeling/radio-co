@@ -9,11 +9,9 @@
 
 	Howler.autoUnlock = false;
 
-	export let id;
+	export let src;
 
 	const timestamp = new Date().getTime();
-	const stream = `${id}_a`;
-	const src = `https://${id}.out.airtime.pro/${stream}?i${timestamp}`;
 
 	console.log( src );
 	let status = 'loading';
@@ -35,7 +33,7 @@
 	}
 
 	let radio = new Howl({
-		src: src,
+		src: `${src}?i${timestamp}`,
 		preload: false,
 		html5: true,
 		format: ['mp3'],

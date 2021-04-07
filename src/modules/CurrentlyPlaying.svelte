@@ -1,33 +1,30 @@
 <script>
 
-    export let host;
+  import { onMount, onDestroy } from 'svelte';
+  import {load} from '../utilities/load.js';
 
-    import LiveInfo from './LiveInfo.svelte';
+  export let endpoint;
+  console.log( endpoint );
+  let data = {};
+
+  async function fetchInfo(){
+    console.log('fetch');
+    let result = await load( endpoint );
+    console.log(result);
+    data = result;
+  }
+
+  let update = setInterval(()=>{
+    fetchInfo();
+  }, 10 * 1000);
+  fetchInfo();
+
+  onDestroy(()=>{
+    clearInterval(update);
+  })
 
 </script>
 
 <section>
-
-    {#if true}
-        Station status:
-        <div class="info">
-          <LiveInfo {host} info={"station_status"} />
-        </div>
-        Current:
-        <div class="info">
-          <LiveInfo {host} info={"current_track"} />
-        </div>
-        Next:
-        <div class="info">
-          <LiveInfo {host} info={"next_track"} />
-        </div>
-
-    {/if}
-
+  <slot prop={data} />
 </section>
-
-<style lang="scss">
-  .info{
-    margin-left:1em;
-  }
-</style>

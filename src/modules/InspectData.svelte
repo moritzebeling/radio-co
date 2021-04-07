@@ -2,16 +2,14 @@
 
     export let data;
 
-    let show = false;
+    export let open = false;
     function toggle(){
-        show = !show;
+        open = !open;
     }
-
-
 
 </script>
 
 <button on:click={toggle}>Inspect Data</button>
-{#if show}
+{#if open}
     <pre>{JSON.stringify( data, null, 2 )}</pre>
 {/if}
