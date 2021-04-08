@@ -46,15 +46,16 @@
 
 <section class="player">
     {#if status === 'loading'}
-        <p>Loading</p>
+        <p class="stretch">Loading</p>
     {:else if status === 'online'}
         <div>
             <Player src={stream} />
         </div>
-        <p>{track}</p>
+        <p class="stretch">{track}</p>
     {:else}
-        <p>Offline</p>
+        <p class="stretch">Offline</p>
     {/if}
+    <a href={stream} target="_blank">Open original audio stream</a>
 </section>
 
 <pre>Last updated {timestamp}</pre>
@@ -71,6 +72,13 @@
         > div {
             margin-right: 1em;
         }
+        .stretch {
+            flex: 1;
+        }
+    }
+
+    a {
+        text-decoration: underline;
     }
 
 </style>
