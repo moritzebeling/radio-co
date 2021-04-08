@@ -1,5 +1,6 @@
 <script>
 
+	import { pause } from "./radio/Player.svelte";
 	import Radio from "./radio/Radio.svelte";
 	const id = 's21c5fbf27';
 
@@ -12,6 +13,7 @@
 
 <main>
 	<Radio {id} />
+	<button on:click={pause}>Global Pause</button>
 </main>
 
 <style lang="scss">

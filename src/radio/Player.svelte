@@ -1,3 +1,13 @@
+<script context="module">
+
+	let radio;
+
+	export function pause(){
+		radio.volume(0);
+	}
+
+</script>
+
 <script>
 
 	/*
@@ -29,7 +39,7 @@
 		}
 	}
 
-	let radio = new Howl({
+	radio = new Howl({
 		src: `${src}?i${new Date().getTime()}`,
 		preload: false,
 		html5: true,
@@ -63,6 +73,12 @@
 			setStatus('ready');
 			console.log('on stop');
 		},
+		onvolume: () => {
+			if( radio.volume() === 0 ){
+				setStatus('ready');
+				console.log('volume 0');
+			}
+		},
 	});
 
 	onMount(()=>{
@@ -86,7 +102,6 @@
 
 	function handlePause(){
 		radio.volume(0);
-		setStatus('ready');
 	}
 
 </script>
