@@ -41,9 +41,8 @@
 
 	radio = new Howl({
 		src: `${src}?i${new Date().getTime()}`,
-		preload: false,
-		html5: true,
-		format: ['mp3'],
+		html5: true, // required for live streams
+		format: ['mp3', 'aac'],
 		volume: 1,
 		onload: () => {
 			setStatus('ready');
@@ -79,10 +78,6 @@
 				console.log('volume 0');
 			}
 		},
-	});
-
-	onMount(()=>{
-		radio.load();
 	});
 
 	onDestroy(()=>{
