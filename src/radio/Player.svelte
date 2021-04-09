@@ -3,7 +3,12 @@
 	let radio;
 
 	export function pause(){
-		radio.volume(0);
+		try {
+			radio.stop();
+			radio.unload();
+		} catch( error ){
+			console.error( error );
+		}
 	}
 
 </script>
@@ -21,7 +26,7 @@
 
 	export let src;
 
-	let status = 'loading';
+	let status = 'ready';
 
 	function setStatus( set ){
 		switch (set) {
@@ -39,8 +44,7 @@
 		}
 	}
 
-	radio = new Howl({
-		src: `${src}?i${new Date().getTime()}`,
+	const config = {
 		html5: true, // required for live streams
 		format: ['mp3', 'aac'],
 		volume: 1,
@@ -73,31 +77,40 @@
 			console.log('on stop');
 		},
 		onvolume: () => {
-			if( radio.volume() === 0 ){
-				setStatus('ready');
-				console.log('volume 0');
-			}
+			console.log('on volume');
 		},
-	});
-
-	onDestroy(()=>{
-		radio.unload();
-		setStatus('ended');
-	});
+	};
 
 	function handlePlay(){
-		if( radio.playing() ){
-			setStatus('playing');
-		} else {
+		config.src = `${src}?i${new Date().getTime()}`;
+		try {
+			radio = new Howl(config);
 			setStatus('loading');
 			radio.play();
+		} catch(error){
+			setStatus('error');
+			console.error( error );
 		}
-		radio.volume(1);
 	}
 
 	function handlePause(){
-		radio.volume(0);
+		try {
+			radio.stop();
+			radio.unload();
+		} catch( error ){
+			console.error( error );
+		}
 	}
+
+	onDestroy(()=>{
+		try {
+			radio.stop();
+			radio.unload();
+		} catch( error ){
+			console.error( error );
+		}
+		setStatus('ended');
+	});
 
 </script>
 
