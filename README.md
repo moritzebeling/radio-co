@@ -1,20 +1,26 @@
 # Radio.co Radio Player
 
-If you have a radio.co radio station, you might want to implement a radio player on your website, but: the player provided by radio.co is old and not really beautiful. However, radio.co offers a streaming endpoint and a (very minimalistic) API.
+Have a look at our [research](RESEARCH.md) that leads us here.
 
-This repo offers:
-- A play/pause radio player
-- A display of the currently playing track title
+Having a radio.co radio station, you might want to implement a radio player on your website, but: the player provided by radio.co is old and not really beautiful. However, radio.co offers a streaming endpoint and a (very minimalistic) API.
 
-Ho to access radio.co
-- **API** `https://public.radio.co/stations/${stationId}/status`
-- **Stream** `https://${streamHost}/${stationId}/listen`
+Our requirements that this repo meets:
+- Stream audio from radio.co streaming endpoint
+- build play/pause player that can be paused from outside
+- Connect to station api endpoint
+- show the currently playing track
+
+## Development
 
 Procedure:
 1. Get your radio.co `stationId`
 2. Call the API
 3. The response contains a currently available streaming host
 4. Create a [Howler.js](https://github.com/goldfire/howler.js) player
+
+Ho to access radio.co
+- **API** `https://public.radio.co/stations/${stationId}/status`
+- **Stream** `https://${streamHost}/${stationId}/listen`
 
 Example API result:
 ```json
@@ -53,13 +59,12 @@ Example API result:
 }
 ```
 
-## Development
-
+This project is implemented in JS framework Svelte and uses rollup and howler.js. Get going with:
 ```
 npm install
 npm run dev
 ```
 
-## Warning
+## Disclaimer
 
-⚠️ This is just a dummy that you can build upon. Do not use this for production before verifying everything yourself.
+⚠️ This is just a dummy to experiment. Feel free to enhance. Do not take it as is in production.
