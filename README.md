@@ -1,7 +1,5 @@
 # Radio.co Radio Player
 
-Have a look at our [research](RESEARCH.md) that leads us here.
-
 Having a radio.co radio station, you might want to implement a radio player on your website, but: the player provided by radio.co is old and not really beautiful. However, radio.co offers a streaming endpoint and a (very minimalistic) API.
 
 Our requirements that this repo meets:
@@ -9,6 +7,10 @@ Our requirements that this repo meets:
 - build play/pause player that can be paused from outside
 - Connect to station api endpoint
 - show the currently playing track
+
+[Live demo](https://radio-co-player.netlify.app)
+
+If you’re interested, have a look at our [research](RESEARCH.md) that leads us here.
 
 ## Development
 
