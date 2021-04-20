@@ -45,13 +45,13 @@ Mp3:
 Unknown, but no list of radio stations would be complete without:
 - [NTS](https://www.nts.live/)
 
-On top of that we also found:
+We also found:
 - [Azuracast](https://www.azuracast.com)
 
 ## Problems with those services
 
 - expensive (~$50-80/month)
-- some seem to be old
+- some seem to be old, at least look and feel old
 - non-intuitive interface and hard to administrate
 - no good looking embed player
 - no dev docs on how to build a custom player or do API requests
@@ -67,9 +67,10 @@ After searching the whole wide web (github, stackoverflow) for example projects 
 - all archived tracks are hosted on Mixcloud and are embedded on the website with a [second cusom player](https://gist.github.com/moritzebeling/bfa5b01c98aa8eff9e5753eded011df0)
 - both those players pause each other when one is being played
 
-[Bare player example](https://radio-co-player.netlify.app)
-
 [Source code](https://github.com/moritzebeling/radio-co/tree/main/src/radio)
+
+[Bare player example](https://radio-co-player.netlify.app)
+[Final implementation](https://eosradio.de)
 
 Further reading:
 [Brief history of internet radio](https://radio.co/blog/a-brief-history-of-internet-radio) by radio.co
