@@ -8,6 +8,8 @@ Our requirements that this repo meets:
 - Connect to station api endpoint
 - show the currently playing track
 
+[Source code](https://github.com/moritzebeling/radio-co/tree/main/src/radio)
+
 [Live demo](https://radio-co-player.netlify.app)
 
 If you’re interested, have a look at our [research](RESEARCH.md) that leads us here.

@@ -69,7 +69,7 @@ After searching the whole wide web (github, stackoverflow) for example projects 
 
 [Bare player example](https://radio-co-player.netlify.app)
 
-[Source code](https://github.com/moritzebeling/radio-co/tree/main/src)
+[Source code](https://github.com/moritzebeling/radio-co/tree/main/src/radio)
 
 Further reading:
 [Brief history of internet radio](https://radio.co/blog/a-brief-history-of-internet-radio) by radio.co
