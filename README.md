@@ -11,6 +11,7 @@ Our requirements that this repo meets:
 [Source code](https://github.com/moritzebeling/radio-co/tree/main/src/radio)
 
 [Example demo](https://radio-co-player.netlify.app)
+
 [Final implementation](https://eosradio.de)
 
 If you’re interested, have a look at our [research](RESEARCH.md) that leads us here.
